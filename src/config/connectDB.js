@@ -1,10 +1,9 @@
-
-
 const { Sequelize } = require('sequelize')
 
-const sequelize = new Sequelize('testDB', 'root', null, {
+const sequelize = new Sequelize('mydatabase', 'root', null, {
     host: 'localhost',
-    dialect: 'mysql' 
+    dialect: 'mysql' ,
+    logging: false  // xóa phần log
   });
 
 const connectDB = async() => {
