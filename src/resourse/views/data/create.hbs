@@ -1,0 +1,51 @@
+
+<style>
+    
+    .css {
+        margin-left: 80px;
+        margin-right: 80px;
+    }    
+
+</style>
+
+
+<div class="mt-4 css">
+    <h3 style="margin-left: 50px">Thêm người dùng</h3>
+
+    <form method="POST" action="/data/store" class="mt-4">
+
+    <div class="form-group">
+        <label for="name">Họ và tên</label>
+        <input  class="form-control" id="name" name="name" >
+        
+    </div>
+
+    <div class="form-group ">
+        <label for="email">Email</label>
+        <input  class="form-control" id="email" name="email" >
+        
+    </div>
+    <div class="form-group">
+        <label for="age">Tuổi</label>
+        <input  class="form-control" id="age" name="age" >
+        
+    </div>
+   <div class="form-group">
+
+    <label for="gender-input">Giới Tính</label>
+
+    <select name="gender" id="gender-input">
+        
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+
+    </select>
+  </div>
+    
+
+    
+
+
+    <button type="submit" class="btn btn-primary">Thêm người dùng</button>
+</form>
+</div>

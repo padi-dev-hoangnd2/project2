@@ -1,1 +1,126 @@
-<p>{{data }}</p>
+<style>
+.addData{
+    margin-top: 50px;
+    margin-left: 1100px;
+
+
+}
+
+
+</style>
+
+
+
+
+<div>
+    
+    <a href="/data/create" >
+    <button class="addData">Thêm dữ liệu người dùng</button>
+    </a>
+
+
+
+{{!-- -------------------------------------------- --}}
+    <div>
+        <style>
+
+    .css {
+    margin-left: 80px;
+    margin-right: 80px;
+    }
+
+
+
+</style>
+
+
+
+<div class="mt-3 css">
+    <h3>Dữ liệu của tôi</h3>
+
+    <table class="table mt-4">
+            <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Họ và tên</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Tuổi</th>
+                    <th scope="col">Giới Tính</th>
+
+                    <th scope="col"></th>
+                    </tr>
+            </thead>
+            {{#each data}}
+            <tbody>
+                    <tr>
+                    <th scope="row">{{sum @index 1}}</th> 
+                    <td>{{this.name}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.age}}</td>
+                    <td>{{this.gender}}</td>
+                        <td><a href="/data/{{this.id}}/edit" class="btn btn-link" >Sửa</a>
+                    
+                        <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this.id}}" data-target="#delete-data-modal">Xóa</a></td> 
+                    </tr>
+                        
+            </tbody>
+             {{/each }}
+</table>
+
+</div>
+
+
+{{!-- ---------------------------------- --}}
+
+<div class="modal" id="delete-data-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa Dữ Liệu?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có chắc chắn muốn xóa</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-data" type="button" class="btn btn-danger">Xóa bỏ</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+<form method="POST" name="delete-data-form"></form>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded',function(){
+            var dataId 
+            var deleteForm = document.forms['delete-data-form']
+            var btnDeleteData = document.getElementById('btn-delete-data')
+$('#delete-data-modal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+   dataId = button.data('id') // Extract info from data-* attributes
+  
+});
+            btnDeleteData.onclick = function(){
+        deleteForm.action =  '/data/delete' + dataId + '?_method=DELETE'
+
+}
+        
+})
+
+
+</script>
