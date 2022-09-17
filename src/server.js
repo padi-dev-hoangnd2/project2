@@ -2,6 +2,7 @@
 const path = require('path')
 const express = require('express')
 const { engine } = require('express-handlebars')
+const methodOverride = require('method-override')
 const app = express();
 const port = 8080
 
@@ -22,6 +23,8 @@ app.engine('hbs', engine({
   }));
 app.set('view engine', 'hbs');
 app.set('views',path.join(__dirname,"resourse/views")) // nối đường link
+
+app.use(methodOverride('_method'))
 
  // khởi tạo tuyến đường 
 const route = require('./routes')
